@@ -8,12 +8,13 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-const mailOptions = {
-  from: "prashantpathak6395@gmail.com",
-  to: "prashantpathak6297@gmail.com",
-  subject: "JobJunction email confirmation",
-  text: "Please confirm your email",
-  html: `
+const sendEmail = async (req, res) => {
+  const mailOptions = {
+    from: "prashantpathak6395@gmail.com",
+    to: req.body.email,
+    subject: "Password for JobJunction",
+    text: "JobJunction",
+    html: `
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -31,7 +32,7 @@ const mailOptions = {
             max-width: 600px;
             margin: 20px auto;
             padding: 20px;
-            background-color: #frvnerl;
+            background-color: #ffffff;
             border-radius: 10px;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
         }
@@ -57,19 +58,6 @@ const mailOptions = {
             margin-bottom: 20px;
         }
 
-        .button {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: #ffffff;
-            text-decoration: none;
-            border-radius: 5px;
-        }
-
-        .button:hover {
-            background-color: #0056b3;
-        }
-
         .footer {
             text-align: center;
             margin-top: 20px;
@@ -79,17 +67,24 @@ const mailOptions = {
             font-size: 14px;
             color: #888888;
         }
+        .password{
+          text-align: center;
+          
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="logo">
-            <img src="https://drive.google.com/file/d/1_4rqDeBTirzaeTfJc11_B1mKb0aj9N8D/view?usp=sharing" alt="JobJunction">
+            <img src="https://raw.githubusercontent.com/Prashant-pathak-01/JobJunction/master/frontend/src/data/Logo.png" alt="JobJunction">
         </div>
         <div class="content">
             <p class="message">Dear HR,</p>
-            <p class="message">Thank you for creating an account on JobJunction. Please click the button below to confirm your email address.</p>
-            <a href="https://example.com/confirm-email" class="button">Confirm Email</a>
+            <p class="message">Thank you for creating an account on JobJunction.</p>
+            <p class="message">Your password for login is given below:</p>
+            <h1 class="password">${req.body.password}</h1>
+            <p class="message">Please ensure to keep your password secure and do not share it with anyone.</p>
+            <p class="message">If you have any questions or need further assistance, feel free to contact us.</p>
         </div>
         <div class="footer">
             <p>If you did not create an account on JobJunction, please disregard this email.</p>
@@ -97,15 +92,15 @@ const mailOptions = {
     </div>
 </body>
 </html>
+`,
+  };
 
-  `,
-};
-
-(async () => {
   try {
     const info = await transporter.sendMail(mailOptions);
-    console.log("Email sent: " + info.response);
+    return res.status(200).json(info.response);
   } catch (error) {
-    console.error(error);
+    return res.status(500).json("Some error occured " + error.message);
   }
-})();
+};
+
+export default sendEmail;

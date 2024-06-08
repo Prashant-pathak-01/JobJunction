@@ -3,12 +3,14 @@ import Homepage from "./components/HomePage/Homepage";
 import Footer from "./components/HomePage/Footer";
 import LoginStudent from "./components/Student/Login";
 import SignupStudent from "./components/Student/Signup";
-import Dashboard from "./components/Dashboard/Dashboard";
+import Dashboard from "./components/HR/dashboardHR";
 import Jobs from "./components/Searching portal/Jobs";
 import JobDetail from "./components/Searching portal/Job/job";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import PageNotFound from "./components/HomePage/PageNotFound";
 import LoginHR from "./components/HR/loginHR";
+import SignupHR from "./components/HR/signupHR";
+
 function App() {
   return (
     <Router>
@@ -43,6 +45,15 @@ function App() {
             }
           />
           <Route
+            path="/dashboard"
+            element={
+              <>
+                <Dashboard />
+                <Footer></Footer>
+              </>
+            }
+          />
+          <Route
             path="/recruiter/login"
             element={
               <>
@@ -52,7 +63,16 @@ function App() {
             }
           />
           <Route
-            path="/dashboard"
+            path="/recruiter/signup"
+            element={
+              <>
+                <SignupHR />
+                <Footer></Footer>
+              </>
+            }
+          />
+          <Route
+            path="/recruiter/dashboard"
             element={
               <>
                 <Dashboard />

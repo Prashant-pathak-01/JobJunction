@@ -13,9 +13,20 @@ import {
   addProject,
   removeProject,
 } from "./controllers/user.js";
+import {
+  addRecruiter,
+  updatePassword,
+  checkPassword,
+} from "./controllers/recruiter.js";
 import { getJob } from "./controllers/job.js";
+import sendLoginMail from "./mailSender/loginMail.js";
+import sendSignupMail from "./mailSender/signupMail.js";
+
 const route = express.Router();
 
+{
+  /* User */
+}
 route.post("/addUser", addUser);
 route.post("/getUser", getUser);
 route.post("/addEducation", addEducation);
@@ -28,6 +39,19 @@ route.post("/addExperience", addExperience);
 route.post("/removeExperience", removeExperience);
 route.post("/addProject", addProject);
 route.post("/removeProject", removeProject);
+
+{
+  /* Recruiter */
+}
+route.post("/addrecruiter", addRecruiter);
+route.post("/checkPassword", checkPassword);
+route.post("/updatePassword", updatePassword);
+
+{
+  /* Mail */
+}
+route.post("/sendLoginMail", sendLoginMail);
+route.post("/sendSignupMail", sendSignupMail);
 
 route.post("/getJob", getJob);
 

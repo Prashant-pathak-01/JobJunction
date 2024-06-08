@@ -4,7 +4,6 @@ import Dotenv from "dotenv";
 import cors from "cors";
 import bodyparser from "body-parser";
 import connection from "./db.js";
-import "./mailSender/mail.js";
 Dotenv.config();
 
 const app = express();
