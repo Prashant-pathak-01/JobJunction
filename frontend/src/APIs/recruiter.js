@@ -1,5 +1,5 @@
 import axios from "axios";
-const SERVER = "http://localhost:8000";
+const SERVER = "https://jobjunction-t1u2.onrender.com";
 
 export const addRecruiter = async (data) => {
   try {
