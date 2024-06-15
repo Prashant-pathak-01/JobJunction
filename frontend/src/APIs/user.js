@@ -109,3 +109,39 @@ export const removeProject = async (data) => {
     return `some error occured : ${error.message}`;
   }
 };
+
+export const applied = async (data) => {
+  try {
+    let res = axios.post(`${SERVER}/applied`, data);
+    return res;
+  } catch (error) {
+    return `some error occured : ${error.message}`;
+  }
+};
+
+export const savedJob = async (data) => {
+  try {
+    let res = axios.post(`${SERVER}/savedJob`, data);
+    return res;
+  } catch (error) {
+    return `some error occured : ${error.message}`;
+  }
+};
+
+export const uploadResumeFileMongoDB = async (data) => {
+  try {
+    let res = axios.post(`${SERVER}/uploadResumeFileMongoDB`, data);
+    return res;
+  } catch (error) {
+    return `some error occured : ${error.message}`;
+  }
+};
+
+export const uploadPhotoMongoDB = async (data) => {
+  try {
+    let res = axios.post(`${SERVER}/uploadPhotoMongoDB`, data);
+    return res;
+  } catch (error) {
+    return `some error occured : ${error.message}`;
+  }
+};

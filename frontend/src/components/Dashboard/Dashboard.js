@@ -6,6 +6,10 @@ import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import PermIdentityIcon from "@mui/icons-material/PermIdentity";
 import CakeIcon from "@mui/icons-material/Cake";
 import { Button } from "@mui/material";
+import BookmarkAddedIcon from "@mui/icons-material/BookmarkAdded";
+import TaskAltIcon from "@mui/icons-material/TaskAlt";
+import SavedJobs from "./SavedJobs";
+import AppliedJobs from "./AppliedJobs";
 import {
   getUser,
   removeEducation,
@@ -19,27 +23,30 @@ import UpdateSkills from "./updatingModals/Skills";
 import UpdateExperience from "./updatingModals/Experience";
 import UpdateProjects from "./updatingModals/Projects";
 import UpdateLanguage from "./updatingModals/Language";
+import ResumeUpload from "./updatingModals/resume";
+import PhotoUpdate from "./updatingModals/photo";
 import DestinationImg from "./../../data/toFrom.png";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import CloseIcon from "@mui/icons-material/Close";
 import LanguageIcon from "@mui/icons-material/Language";
 import GitHubIcon from "@mui/icons-material/GitHub";
-import ArrowCircleDownIcon from "@mui/icons-material/ArrowCircleDown";
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
-
-import PDF from "./../../data/pdf.png";
 import Profile from "../../data/profile.jpg";
 
 function Dashboard() {
   const { user, isSignedIn } = useUser();
   const [userData, setUserData] = useState({});
-
   const [isQualificationModalOpen, setIsQualificationModalOpen] =
     useState(false);
   const [isSkillsModalOpen, setIsSkillsModalOpen] = useState(false);
   const [isLanguageModalOpen, setIsLanguageModalOpen] = useState(false);
   const [isExperienceModalOpen, setIsExperienceModalOpen] = useState(false);
   const [isProjectsModalOpen, setIsProjectsModalOpen] = useState(false);
+  const [isSavedJobsOpen, setIsSavedJobsOpen] = useState(false);
+  const [isAppliedJobsOpen, setIsAppliedJobsOpen] = useState(false);
+  const [isResumeUploadOpen, setIsResumeUploadOpen] = useState(false);
+  const [isPhotoUploadOpen, setIsPhotoUploadOpen] = useState(false);
+
   const [removed, setRemoved] = useState(false);
 
   const handleCloseModal = (modalType) => {
@@ -59,6 +66,14 @@ function Dashboard() {
       case "projects":
         setIsProjectsModalOpen(false);
         break;
+      case "savedJobs":
+        setIsSavedJobsOpen(false);
+      case "appliedJobs":
+        setIsAppliedJobsOpen(false);
+      case "resume":
+        setIsResumeUploadOpen(false);
+      case "photo":
+        setIsPhotoUploadOpen(false);
       default:
         break;
     }
@@ -93,7 +108,6 @@ function Dashboard() {
       email: user.primaryEmailAddress.emailAddress,
       id: id,
     });
-    console.log(res);
     setRemoved(!removed);
   };
 
@@ -102,7 +116,6 @@ function Dashboard() {
       email: user.primaryEmailAddress.emailAddress,
       id: id,
     });
-    console.log(res);
     setRemoved(!removed);
   };
 
@@ -111,7 +124,6 @@ function Dashboard() {
       email: user.primaryEmailAddress.emailAddress,
       id: id,
     });
-    console.log(res);
     setRemoved(!removed);
   };
 
@@ -120,7 +132,6 @@ function Dashboard() {
       email: user.primaryEmailAddress.emailAddress,
       id: id,
     });
-    console.log(res);
     setRemoved(!removed);
   };
 
@@ -129,7 +140,6 @@ function Dashboard() {
       email: user.primaryEmailAddress.emailAddress,
       id: id,
     });
-    console.log(res);
     setRemoved(!removed);
   };
 
@@ -153,9 +163,18 @@ function Dashboard() {
                       src={userData.Photo === "" ? Profile : userData.Photo}
                       className="rounded-full w-48 h-48 p-2 ml-8 m-4 border-2 border-slate-700"
                     ></img>
-                    <p className="absolute ml-44 mt-6 bg-white p-2 rounded-full text-slate-700 border-2 border-slate-700 hover:bg-slate-100 cursor-pointer hover:scale-105 transition-all">
+                    <button
+                      onClick={() => setIsPhotoUploadOpen(true)}
+                      className="absolute ml-44 mt-6 bg-white p-2 rounded-full text-slate-700 border-2 border-slate-700 hover:bg-slate-100 cursor-pointer hover:scale-105 transition-all"
+                    >
                       <EditOutlinedIcon></EditOutlinedIcon>
-                    </p>
+                    </button>
+                    {isPhotoUploadOpen && (
+                      <PhotoUpdate
+                        email={userData.Email}
+                        onClose={() => handleCloseModal("photo")}
+                      ></PhotoUpdate>
+                    )}
                   </span>
                   <div className="ml-10 p-1">
                     <h2 className="text-3xl font-semibold pt-2 mb-6 text-slate-700">
@@ -165,24 +184,41 @@ function Dashboard() {
                       <MailOutlineIcon />{" "}
                       <span className="ml-2">{userData.Email}</span>
                     </h3>
-                    <h3 className="text-slate-600 text-sm mt-2 flex items-center">
-                      <PermIdentityIcon />{" "}
-                      <span className="ml-2">
-                        {userData.Gender ? userData.Gender : "-"}
-                      </span>
-                    </h3>
-                    <h3 className="text-slate-600 text-sm mt-2 flex items-center">
-                      <CakeIcon />{" "}
-                      <span className="ml-2">
-                        {userData.DoB ? userData.DoB : "-"}
-                      </span>
-                    </h3>
                   </div>
                 </div>
 
-                {/* Saved Jobs */}
-                <div className="bg-red-100 m-4 rounded-lg p-2 ml-0 w-1/4">
-                  krv
+                {/* Saved Jobs or Applied Jobs */}
+                <div className="m-4 rounded-lg p-2 ml-0 w-1/4 flex flex-col justify-center">
+                  <div
+                    className="flex flex-row bg-white p-4 mt-4 mb-4 rounded-md hover:scale-105 transition-all cursor-pointer border-2  border-blue-200 justify-center"
+                    onClick={() => setIsSavedJobsOpen(true)}
+                  >
+                    <p className="mr-4 text-blue-900">
+                      <BookmarkAddedIcon></BookmarkAddedIcon>
+                    </p>
+                    <p className="font-semibold text-blue-900">Saved Jobs</p>
+                  </div>
+                  {isSavedJobsOpen && (
+                    <SavedJobs
+                      handleClose={() => handleCloseModal("savedJobs")}
+                      jobs={userData.SavedJobs}
+                    ></SavedJobs>
+                  )}
+                  <div
+                    className="flex flex-row bg-white p-4 mt-4 mb-4 rounded-md hover:scale-105 transition-all cursor-pointer border-2  border-blue-200 justify-center"
+                    onClick={() => setIsAppliedJobsOpen(true)}
+                  >
+                    <p className="mr-4 text-blue-900">
+                      <TaskAltIcon></TaskAltIcon>
+                    </p>
+                    <p className="font-semibold text-blue-900">Applied Jobs</p>
+                  </div>
+                  {isAppliedJobsOpen && (
+                    <AppliedJobs
+                      handleClose={() => handleCloseModal("appliedJobs")}
+                      jobs={userData.AppliedJobs}
+                    ></AppliedJobs>
+                  )}
                 </div>
               </div>
 
@@ -493,64 +529,34 @@ function Dashboard() {
                   employers. Craft it carefully to secure your desired job or
                   internship.
                 </h2>
-                <div className="flex flex-row justify-evenly items-center p-4">
-                  <div className="bg-purple-100 rounded-lg items-center justify-center flex flex-col p-6 w-1/3">
-                    <img src={PDF} className="w-28"></img>
-                    <a
-                      href={userData.Resume}
-                      className="p-2 bg-blue-600 text-white m-2 hover:scale-90 text-sm font-mono h-8  transition-all rounded items-center flex "
-                    >
-                      Download<ArrowCircleDownIcon></ArrowCircleDownIcon>
-                    </a>
+                <div className="flex flex-row justify-between m-4 ml-14 mr-14 items-center">
+                  <div>
+                    {userData.Resume != "" ? (
+                      <a
+                        href={userData.Resume}
+                        className="text-blue-800 font-semibold hover:text-red-600 "
+                      >
+                        download your resume
+                      </a>
+                    ) : (
+                      <p className="text-slate-700 cursor-not-allowed font-semibold">
+                        No resume found
+                      </p>
+                    )}
                   </div>
-                  <div className="flex items-center justify-center  w-3/5 ">
-                    <label
-                      htmlFor="dropzone-file"
-                      className="flex flex-col items-center justify-center w-full h-44 border-2 border-colorA border-dashed rounded-lg cursor-pointer hover:bg-colorB  bg-gray-100"
+                  <div>
+                    <button
+                      onClick={() => setIsResumeUploadOpen(true)}
+                      className="border-2 border-blue-700 border-2 p-2 pl-4 pr-4 rounded-md text-blue-800 font-semibold hover:text-white hover:bg-blue-800 transition-all"
                     >
-                      <div className="flex flex-col items-center justify-center ">
-                        <svg
-                          className="w-8 h-8 mb-4 text-gray-500"
-                          aria-hidden="true"
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 20 16"
-                        >
-                          <path
-                            stroke="currentColor"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"
-                          />
-                        </svg>
-                        <p className="mb-2 text-sm text-gray-500">
-                          Click to{" "}
-                          <span className="font-semibold text-red-500 text-lg">
-                            {" "}
-                            upload
-                          </span>{" "}
-                          or{" "}
-                          <span className="font-semibold text-blue-500 text-lg">
-                            {" "}
-                            drag
-                          </span>{" "}
-                          and{" "}
-                          <span className="font-semibold text-purple-500 text-lg">
-                            {" "}
-                            drop
-                          </span>
-                        </p>
-                        <p className="text-xs text-primaryColorA font-semibold">
-                          Supported formats: doc, docx, rtf, pdf, up to 2MB
-                        </p>
-                      </div>
-                      <input
-                        id="dropzone-file"
-                        type="file"
-                        className="hidden"
-                      />
-                    </label>
+                      Update Resume ?
+                    </button>
+                    {isResumeUploadOpen && (
+                      <ResumeUpload
+                        email={userData.Email}
+                        onClose={() => handleCloseModal("resume")}
+                      ></ResumeUpload>
+                    )}
                   </div>
                 </div>
               </div>

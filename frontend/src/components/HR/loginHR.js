@@ -74,7 +74,7 @@ const LoginHR = () => {
       } else if (res.email === 0) {
         alert("Some error occurred");
       } else {
-        //await sendLoginMail({ email: email, password: pass });
+        await sendLoginMail({ email: email, password: pass });
         setOpenPasswordSent(true);
         setShowPasswordInput(!passwordInput);
       }

@@ -12,13 +12,23 @@ import {
   removeExperience,
   addProject,
   removeProject,
+  applied,
+  savedJob,
+  uploadResumeFileMongoDB,
+  uploadPhotoMongoDB,
 } from "./controllers/user.js";
 import {
   addRecruiter,
   updatePassword,
   checkPassword,
 } from "./controllers/recruiter.js";
-import { getJob } from "./controllers/job.js";
+import {
+  getJob,
+  addJob,
+  getMyJobs,
+  getAllJobs,
+  apply,
+} from "./controllers/job.js";
 import sendLoginMail from "./mailSender/loginMail.js";
 import sendSignupMail from "./mailSender/signupMail.js";
 
@@ -39,6 +49,10 @@ route.post("/addExperience", addExperience);
 route.post("/removeExperience", removeExperience);
 route.post("/addProject", addProject);
 route.post("/removeProject", removeProject);
+route.post("/applied", applied);
+route.post("/savedJob", savedJob);
+route.post("/uploadResumeFileMongoDB", uploadResumeFileMongoDB);
+route.post("/uploadPhotoMongoDB", uploadPhotoMongoDB);
 
 {
   /* Recruiter */
@@ -53,6 +67,13 @@ route.post("/updatePassword", updatePassword);
 route.post("/sendLoginMail", sendLoginMail);
 route.post("/sendSignupMail", sendSignupMail);
 
+{
+  /* Job */
+}
 route.post("/getJob", getJob);
+route.post("/addJob", addJob);
+route.post("/getMyJobs", getMyJobs);
+route.post("/getAllJobs", getAllJobs);
+route.post("/apply", apply);
 
 export default route;

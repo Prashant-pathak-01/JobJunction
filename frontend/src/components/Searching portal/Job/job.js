@@ -86,7 +86,7 @@ function Job() {
             </a>
             <div className="w-full">
               <h1 className="justify-center items-center text-4xl font-serif mt-6 font-semibold flex text-slate-800">
-                {job.title} <span className="text-lg ml-2">({job.mode})</span>
+                {job.title}
               </h1>
               <h2 className="text-center font-semibold text-xl">
                 {job.company.name}
@@ -129,11 +129,15 @@ function Job() {
               </h3>
               <h3 className="flex pt-2">
                 <PaymentsOutlinedIcon />
-                <p className="ml-4 font-semibold">{job.salary_range}</p>
+                <p className="ml-4 font-semibold">
+                  {job.salary_range} Lakh per Annum
+                </p>
               </h3>
               <h3 className="flex pt-2">
                 <TimerOutlinedIcon />
-                <p className="ml-4 font-semibold">{job.experience}</p>
+                <p className="ml-4 font-semibold">
+                  {job.experience} years of experience ( required )
+                </p>
               </h3>
             </div>
           </div>

@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
-import hiringCompany01 from "./../../data/hiring_company_01.jpg";
+import hiringCompany01 from "./../../data/hiring_company_01.png";
 import hiringCompany02 from "./../../data/hiring_company_02.png";
-import hiringCompany03 from "./../../data/hiring_company_03.jpg";
-import hiringCompany04 from "./../../data/hiring_company_04.jpg";
-import hiringCompany05 from "./../../data/hiring_company_05.jpg";
+import hiringCompany03 from "./../../data/hiring_company_03.png";
+import hiringCompany04 from "./../../data/hiring_company_04.png";
+import hiringCompany05 from "./../../data/hiring_company_05.png";
 import hiringCompany06 from "./../../data/hiring_company_06.png";
+import hiringCompany07 from "./../../data/hiring_company_07.png";
+
 import { useNavigate } from "react-router-dom";
 import "./slider.css";
 
@@ -51,7 +53,7 @@ function Body() {
       </h1>
       <div className="slider bg-secondaryColorB  p-4">
         <div className="slider-track">
-          <div className="slider-item w-16 items-center justify-center flex flex-col p-8">
+          <div className="slider-item w-60 items-center justify-center flex flex-col p-10 ml-80">
             <img
               src={hiringCompany01}
               className="w-40 h-40 z-0"
@@ -65,7 +67,7 @@ function Body() {
               className="w-40 h-40 z-0"
               alt="Company 2"
             />
-            <p className="mt-4 font-sans from-neutral-800 font-xl">Zomato</p>
+            <p className="mt-4 font-sans from-neutral-800 font-xl">HP</p>
           </div>
           <div className="slider-item w-16 items-center justify-center flex flex-col p-8">
             <img
@@ -73,7 +75,7 @@ function Body() {
               className="w-40 h-40 z-0"
               alt="Company 3"
             />
-            <p className="mt-4 font-sans from-neutral-800 font-xl">Amazon</p>
+            <p className="mt-4 font-sans from-neutral-800 font-xl">Netflix</p>
           </div>
           <div className="slider-item w-16 items-center justify-center flex flex-col p-8">
             <img
@@ -81,7 +83,7 @@ function Body() {
               className="w-40 h-40 z-0"
               alt="Company 4"
             />
-            <p className="mt-4 font-sans from-neutral-800 font-xl">PrimePac</p>
+            <p className="mt-4 font-sans from-neutral-800 font-xl">PayPal</p>
           </div>
           <div className="slider-item w-16 items-center justify-center flex flex-col p-8">
             <img
@@ -89,7 +91,7 @@ function Body() {
               className="w-40 h-40 z-0"
               alt="Company 5"
             />
-            <p className="mt-4 font-sans from-neutral-800 font-xl">Capgimini</p>
+            <p className="mt-4 font-sans from-neutral-800 font-xl">Pinterest</p>
           </div>
           <div className="slider-item w-16 items-center justify-center flex flex-col p-8">
             <img
@@ -97,55 +99,15 @@ function Body() {
               className="w-40 h-40 z-0"
               alt="Company 6"
             />
-            <p className="mt-4 font-sans from-neutral-800 font-xl">Relience</p>
+            <p className="mt-4 font-sans from-neutral-800 font-xl">Spotify</p>
           </div>
           <div className="slider-item w-16 items-center justify-center flex flex-col p-8">
             <img
-              src={hiringCompany01}
+              src={hiringCompany07}
               className="w-40 h-40 z-0"
-              alt="Company 1"
-            />
-            <p className="mt-4 font-sans from-neutral-800 font-xl">Flipkart</p>
-          </div>
-          <div className="slider-item w-16 items-center justify-center flex flex-col p-8">
-            <img
-              src={hiringCompany02}
-              className="w-40 h-40 z-0"
-              alt="Company 2"
+              alt="Company 7"
             />
             <p className="mt-4 font-sans from-neutral-800 font-xl">Zomato</p>
-          </div>
-          <div className="slider-item w-16 items-center justify-center flex flex-col p-8">
-            <img
-              src={hiringCompany03}
-              className="w-40 h-40 z-0"
-              alt="Company 3"
-            />
-            <p className="mt-4 font-sans from-neutral-800 font-xl">Amazon</p>
-          </div>
-          <div className="slider-item w-16 items-center justify-center flex flex-col p-8">
-            <img
-              src={hiringCompany04}
-              className="w-40 h-40 z-0"
-              alt="Company 4"
-            />
-            <p className="mt-4 font-sans from-neutral-800 font-xl">PrimePac</p>
-          </div>
-          <div className="slider-item w-16 items-center justify-center flex flex-col p-8">
-            <img
-              src={hiringCompany05}
-              className="w-40 h-40 z-0"
-              alt="Company 5"
-            />
-            <p className="mt-4 font-sans from-neutral-800 font-xl">Capgimini</p>
-          </div>
-          <div className="slider-item w-16 items-center justify-center flex flex-col p-8">
-            <img
-              src={hiringCompany06}
-              className="w-40 h-40 z-0"
-              alt="Company 6"
-            />
-            <p className="mt-4 font-sans from-neutral-800 font-xl">Relience</p>
           </div>
           <div className="slider-item w-16 items-center justify-center flex flex-col p-8">
             <img
@@ -161,7 +123,7 @@ function Body() {
               className="w-40 h-40 z-0"
               alt="Company 2"
             />
-            <p className="mt-4 font-sans from-neutral-800 font-xl">Zomato</p>
+            <p className="mt-4 font-sans from-neutral-800 font-xl">HP</p>
           </div>
           <div className="slider-item w-16 items-center justify-center flex flex-col p-8">
             <img
@@ -169,7 +131,7 @@ function Body() {
               className="w-40 h-40 z-0"
               alt="Company 3"
             />
-            <p className="mt-4 font-sans from-neutral-800 font-xl">Amazon</p>
+            <p className="mt-4 font-sans from-neutral-800 font-xl">Netflix</p>
           </div>
           <div className="slider-item w-16 items-center justify-center flex flex-col p-8">
             <img
@@ -177,7 +139,7 @@ function Body() {
               className="w-40 h-40 z-0"
               alt="Company 4"
             />
-            <p className="mt-4 font-sans from-neutral-800 font-xl">PrimePac</p>
+            <p className="mt-4 font-sans from-neutral-800 font-xl">PayPal</p>
           </div>
           <div className="slider-item w-16 items-center justify-center flex flex-col p-8">
             <img
@@ -185,7 +147,7 @@ function Body() {
               className="w-40 h-40 z-0"
               alt="Company 5"
             />
-            <p className="mt-4 font-sans from-neutral-800 font-xl">Capgimini</p>
+            <p className="mt-4 font-sans from-neutral-800 font-xl">Pinterest</p>
           </div>
           <div className="slider-item w-16 items-center justify-center flex flex-col p-8">
             <img
@@ -193,7 +155,23 @@ function Body() {
               className="w-40 h-40 z-0"
               alt="Company 6"
             />
-            <p className="mt-4 font-sans from-neutral-800 font-xl">Relience</p>
+            <p className="mt-4 font-sans from-neutral-800 font-xl">Spotify</p>
+          </div>
+          <div className="slider-item w-16 items-center justify-center flex flex-col p-8">
+            <img
+              src={hiringCompany07}
+              className="w-40 h-40 z-0"
+              alt="Company 7"
+            />
+            <p className="mt-4 font-sans from-neutral-800 font-xl">Zomato</p>
+          </div>
+          <div className="slider-item w-16 items-center justify-center flex flex-col p-8">
+            <img
+              src={hiringCompany07}
+              className="w-40 h-40 z-0"
+              alt="Company 7"
+            />
+            <p className="mt-4 font-sans from-neutral-800 font-xl">Flipkart</p>
           </div>
         </div>
       </div>

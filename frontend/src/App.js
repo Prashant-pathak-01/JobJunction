@@ -3,7 +3,8 @@ import Homepage from "./components/HomePage/Homepage";
 import Footer from "./components/HomePage/Footer";
 import LoginStudent from "./components/Student/Login";
 import SignupStudent from "./components/Student/Signup";
-import Dashboard from "./components/HR/dashboardHR";
+import DashboardHR from "./components/HR/dashboardHR";
+import Dashboard from "./components/Dashboard/Dashboard";
 import Jobs from "./components/Searching portal/Jobs";
 import JobDetail from "./components/Searching portal/Job/job";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -75,7 +76,7 @@ function App() {
             path="/recruiter/dashboard"
             element={
               <>
-                <Dashboard />
+                <DashboardHR />
                 <Footer></Footer>
               </>
             }
